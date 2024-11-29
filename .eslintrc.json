@@ -45,7 +45,7 @@
   },  
   "overrides": [  
     {  
-      "files": ["**/*.test.ts", "**/*.spec.ts"],  
+      "files": ["**/*.test.ts", "**/*.spec.ts", "__tests__/integration/**/*.ts"],  
       "rules": {  
         "max-lines-per-function": "off",  
         "complexity": "off",  
@@ -57,6 +57,14 @@
       },  
       "env": {  
         "jest": true  
+      }  
+    },  
+    {  
+      "files": ["src/auth.ts"],  
+      "rules": {  
+        "complexity": "off",  
+        "sonarjs/cognitive-complexity": "off",  
+        "@typescript-eslint/no-explicit-any": "off"  
       }  
     }  
   ]  

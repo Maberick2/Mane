@@ -1,11 +1,17 @@
 import * as core from '@actions/core';
 import * as exec from '@actions/exec';
 
-async function dockerLogin(
-  username: string,
-  password: string,
-  registry?: string
-): Promise<void> {
+interface DockerLoginOptions {
+  username: string;
+  password: string;
+  registry?: string;
+}
+
+async function dockerLogin({
+  username,
+  password,
+  registry
+}: DockerLoginOptions): Promise<void> {
   const args = ['login'];
   if (username) args.push('--username', username);
   args.push('--password-stdin');
@@ -20,7 +26,9 @@ async function dockerLogin(
     await exec.getExecOutput('docker', args, options);
   } catch (error) {
     throw new Error(
-      `Failed to login to Docker registry: ${error instanceof Error ? error.message : 'Unknown error'}`
+      `Failed to login to Docker registry: ${
+        error instanceof Error ? error.message : 'Unknown error'
+      }`
     );
   }
 }
@@ -30,12 +38,13 @@ async function dockerLogout(registry: string): Promise<void> {
     await exec.getExecOutput('docker', ['logout', registry]);
   } catch (error) {
     core.warning(
-      `Failed to logout from Docker registry: ${error instanceof Error ? error.message : 'Unknown error'}`
+      `Failed to logout from Docker registry: ${
+        error instanceof Error ? error.message : 'Unknown error'
+      }`
     );
   }
 }
 
-// Exportar run para testing
 export async function run(): Promise<void> {
   try {
     core.saveState('isPost', 'true');
@@ -43,10 +52,9 @@ export async function run(): Promise<void> {
     const username = core.getInput('username');
     const password = core.getInput('password');
     const registry = core.getInput('registry');
-    const ecr = core.getInput('ecr') === 'true';
     const logout = core.getInput('logout');
 
-    await dockerLogin(username, password, registry);
+    await dockerLogin({ username, password, registry });
 
     core.saveState('registry', registry || '');
     core.saveState('logout', logout);
@@ -59,7 +67,6 @@ export async function run(): Promise<void> {
   }
 }
 
-// Exportar cleanup para testing
 export async function cleanup(): Promise<void> {
   try {
     const registry = core.getState('registry');
@@ -77,10 +84,8 @@ export async function cleanup(): Promise<void> {
   }
 }
 
-// Función principal
 export async function main(): Promise<void> {
   const isPost = core.getState('isPost') === 'true';
-
   if (isPost) {
     await cleanup();
   } else {
@@ -88,7 +93,6 @@ export async function main(): Promise<void> {
   }
 }
 
-// Ejecutar solo si no estamos en modo test
 if (!process.env.JEST_WORKER_ID) {
-  main();
+  void main();
 }
