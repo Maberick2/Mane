@@ -1,0 +1,33 @@
+name: Metrics Collection  
+on:  
+  push:  
+    branches: [ main ]  
+  pull_request:  
+    branches: [ main ]  
+
+jobs:  
+  metrics:  
+    runs-on: ubuntu-latest  
+    steps:  
+      - uses: actions/checkout@v2  
+      
+      - name: Setup Node.js  
+        uses: actions/setup-node@v2  
+        with:  
+          node-version: '16'  
+      
+      - name: Install dependencies  
+        run: npm ci  
+      
+      - name: Run tests with coverage  
+        run: npm run test:coverage  
+      
+      - name: Upload coverage reports  
+        uses: codecov/codecov-action@v2  
+      
+      - name: Check build time  
+        run: |  
+          START_TIME=$SECONDS  
+          npm run build  
+          ELAPSED_TIME=$(($SECONDS - $START_TIME))  
+          echo "Build took $ELAPSED_TIME seconds"

@@ -1,0 +1,25 @@
+name: Security Scan  
+on:  
+  push:  
+    branches: [ main ]  
+  pull_request:  
+    branches: [ main ]  
+  schedule:  
+    - cron: '0 0 * * 0'  
+
+jobs:  
+  security:  
+    runs-on: ubuntu-latest  
+    steps:  
+      - uses: actions/checkout@v2  
+      
+      - name: Run OWASP ZAP Scan  
+        uses: zaproxy/action-full-scan@v0.4.0  
+        with:  
+          target: 'http://your-application-url'  
+      
+      - name: Run npm audit  
+        run: npm audit  
+      
+      - name: Run CodeQL Analysis  
+        uses: github/codeql-action/analyze@v2

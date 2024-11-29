@@ -1,0 +1,1354 @@
+  
+<!DOCTYPE html>  
+<html lang="es">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Reporte de Pruebas</title>  
+    <script src="https://cdn.tailwindcss.com"></script>  
+</head>  
+<body class="bg-gray-100 p-8">  
+    <div class="max-w-7xl mx-auto">  
+        <h1 class="text-3xl font-bold mb-8 text-gray-800">Reporte de Pruebas</h1>  
+        
+        <!-- Resumen General -->  
+        <div class="bg-white rounded-lg shadow p-6 mb-8">  
+            <h2 class="text-xl font-semibold mb-4 text-gray-700">Resumen General</h2>  
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">  
+                <div class="bg-blue-50 p-4 rounded-lg">  
+                    <div class="text-2xl font-bold text-blue-600">61</div>  
+                    <div class="text-sm text-blue-600">Pruebas Totales</div>  
+                </div>  
+                <div class="bg-green-50 p-4 rounded-lg">  
+                    <div class="text-2xl font-bold text-green-600">61</div>  
+                    <div class="text-sm text-green-600">Pruebas Exitosas</div>  
+                </div>  
+                <div class="bg-red-50 p-4 rounded-lg">  
+                    <div class="text-2xl font-bold text-red-600">0</div>  
+                    <div class="text-sm text-red-600">Pruebas Fallidas</div>  
+                </div>  
+                <div class="bg-yellow-50 p-4 rounded-lg">  
+                    <div class="text-2xl font-bold text-yellow-600">0.37s</div>  
+                    <div class="text-sm text-yellow-600">Tiempo Total</div>  
+                </div>  
+            </div>  
+        </div>  
+
+        <!-- Sección de Cobertura -->  
+          
+        <div class="bg-white rounded-lg shadow p-6 mb-8">  
+            <h2 class="text-xl font-semibold mb-4 text-gray-700">Informe de cobertura</h2>  
+            <div class="space-y-4">  
+                <!-- Líneas -->  
+                <div>  
+                    <div class="flex justify-between mb-1">  
+                        <span class="text-sm font-medium text-gray-700">Líneas</span>  
+                        <span class="text-sm font-medium text-gray-700">75.79%</span>  
+                    </div>  
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">  
+                        <div class="bg-blue-600 h-2.5 rounded-full" style="width: 75.79%"></div>  
+                    </div>  
+                </div>  
+
+                <!-- Funciones -->  
+                <div>  
+                    <div class="flex justify-between mb-1">  
+                        <span class="text-sm font-medium text-gray-700">Funciones</span>  
+                        <span class="text-sm font-medium text-gray-700">76.47%</span>  
+                    </div>  
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">  
+                        <div class="bg-green-500 h-2.5 rounded-full" style="width: 76.47%"></div>  
+                    </div>  
+                </div>  
+
+                <!-- Ramas -->  
+                <div>  
+                    <div class="flex justify-between mb-1">  
+                        <span class="text-sm font-medium text-gray-700">Ramas</span>  
+                        <span class="text-sm font-medium text-gray-700">72.11%</span>  
+                    </div>  
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">  
+                        <div class="bg-yellow-500 h-2.5 rounded-full" style="width: 72.11%"></div>  
+                    </div>  
+                </div>  
+            </div>  
+        </div>  
+
+        <!-- Secciones de pruebas -->  
+          
+        <div class="mb-8">  
+            <div class="bg-white shadow overflow-hidden sm:rounded-lg">  
+                <div class="px-4 py-5 border-b border-gray-200 sm:px-6">  
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">  
+                        Pruebas Unitarias  
+                    </h3>  
+                    <div class="mt-2 grid grid-cols-2 gap-4">  
+                        <div class="bg-green-50 p-3 rounded-lg">  
+                            <span class="text-green-700 font-semibold">38</span>  
+                            <span class="text-green-600"> Pruebas exitosas</span>  
+                        </div>  
+                        <div class="bg-red-50 p-3 rounded-lg">  
+                            <span class="text-red-700 font-semibold">0</span>  
+                            <span class="text-red-600"> Pruebas fallidas</span>  
+                        </div>  
+                    </div>  
+                </div>  
+                <div class="overflow-x-auto">  
+                    <table class="min-w-full divide-y divide-gray-200">  
+                        <thead class="bg-gray-50">  
+                            <tr>  
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">  
+                                    Nombre de la prueba  
+                                </th>  
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">  
+                                    Clase  
+                                </th>  
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">  
+                                    Estado  
+                                </th>  
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">  
+                                    Tiempo  
+                                </th>  
+                            </tr>  
+                        </thead>  
+                        <tbody class="bg-white divide-y divide-gray-200">  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Permission Validation handles mixed whitespace and empty credentials  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Permission Validation handles mixed whitespace and empty credentials  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.037s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Permission Validation handles trimmed empty credentials  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Permission Validation handles trimmed empty credentials  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Permission Validation validates credential length limits  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Permission Validation validates credential length limits  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Authentication Edge Cases handles various invalid types  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Authentication Edge Cases handles various invalid types  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.050s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Authentication Edge Cases handles various length scenarios  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Authentication Edge Cases handles various length scenarios  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.006s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Authentication Edge Cases handles various special characters  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Authentication Edge Cases handles various special characters  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.029s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Authentication Edge Cases handles various whitespace scenarios  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Authentication Edge Cases handles various whitespace scenarios  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.003s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Authentication Edge Cases handles combinations of valid and invalid inputs  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Authentication Edge Cases handles combinations of valid and invalid inputs  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.019s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Token Management successful login returns valid token  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Token Management successful login returns valid token  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.030s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Token Management failed login does not return token  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Token Management failed login does not return token  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.002s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Token Management token format is valid  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Token Management token format is valid  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.003s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                         with password and username getInputs does not throw error  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                         with password and username getInputs does not throw error  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.015s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        isECR given registry "registry.gitlab.com"  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        isECR given registry "registry.gitlab.com"  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.016s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        isECR given registry "gcr.io"  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        isECR given registry "gcr.io"  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        isECR given registry "012345678901.dkr.ecr.eu-west-3.amazonaws.com"  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        isECR given registry "012345678901.dkr.ecr.eu-west-3.amazonaws.com"  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        isECR given registry "876820548815.dkr.ecr.cn-north-1.amazonaws.com.cn"  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        isECR given registry "876820548815.dkr.ecr.cn-north-1.amazonaws.com.cn"  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        isECR given registry "390948362332.dkr.ecr.cn-northwest-1.amazonaws.com.cn"  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        isECR given registry "390948362332.dkr.ecr.cn-northwest-1.amazonaws.com.cn"  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        isECR given registry "public.ecr.aws"  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        isECR given registry "public.ecr.aws"  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        isPubECR given registry "registry.gitlab.com"  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        isPubECR given registry "registry.gitlab.com"  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        isPubECR given registry "gcr.io"  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        isPubECR given registry "gcr.io"  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        isPubECR given registry "012345678901.dkr.ecr.eu-west-3.amazonaws.com"  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        isPubECR given registry "012345678901.dkr.ecr.eu-west-3.amazonaws.com"  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.002s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        isPubECR given registry "876820548815.dkr.ecr.cn-north-1.amazonaws.com.cn"  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        isPubECR given registry "876820548815.dkr.ecr.cn-north-1.amazonaws.com.cn"  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        isPubECR given registry "390948362332.dkr.ecr.cn-northwest-1.amazonaws.com.cn"  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        isPubECR given registry "390948362332.dkr.ecr.cn-northwest-1.amazonaws.com.cn"  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        isPubECR given registry "public.ecr.aws"  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        isPubECR given registry "public.ecr.aws"  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        getRegion given registry "012345678901.dkr.ecr.eu-west-3.amazonaws.com"  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        getRegion given registry "012345678901.dkr.ecr.eu-west-3.amazonaws.com"  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        getRegion given registry "876820548815.dkr.ecr.cn-north-1.amazonaws.com.cn"  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        getRegion given registry "876820548815.dkr.ecr.cn-north-1.amazonaws.com.cn"  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        getRegion given registry "390948362332.dkr.ecr.cn-northwest-1.amazonaws.com.cn"  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        getRegion given registry "390948362332.dkr.ecr.cn-northwest-1.amazonaws.com.cn"  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        getRegion given registry "public.ecr.aws"  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        getRegion given registry "public.ecr.aws"  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        getAccountIDs given registry "012345678901.dkr.ecr.eu-west-3.amazonaws.com"  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        getAccountIDs given registry "012345678901.dkr.ecr.eu-west-3.amazonaws.com"  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        getAccountIDs given registry "012345678901.dkr.ecr.eu-west-3.amazonaws.com"  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        getAccountIDs given registry "012345678901.dkr.ecr.eu-west-3.amazonaws.com"  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.000s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        getAccountIDs given registry "012345678901.dkr.ecr.eu-west-3.amazonaws.com"  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        getAccountIDs given registry "012345678901.dkr.ecr.eu-west-3.amazonaws.com"  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.002s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        getAccountIDs given registry "390948362332.dkr.ecr.cn-northwest-1.amazonaws.com.cn"  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        getAccountIDs given registry "390948362332.dkr.ecr.cn-northwest-1.amazonaws.com.cn"  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.000s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        getAccountIDs given registry "public.ecr.aws"  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        getAccountIDs given registry "public.ecr.aws"  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.000s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        getRegistriesData given registry "012345678901.dkr.ecr.aws-region-1.amazonaws.com"  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        getRegistriesData given registry "012345678901.dkr.ecr.aws-region-1.amazonaws.com"  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.006s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        getRegistriesData given registry "012345678901.dkr.ecr.eu-west-3.amazonaws.com"  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        getRegistriesData given registry "012345678901.dkr.ecr.eu-west-3.amazonaws.com"  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.003s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        getRegistriesData given registry "public.ecr.aws"  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        getRegistriesData given registry "public.ecr.aws"  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                         loginStandard calls exec  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                         loginStandard calls exec  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.013s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                         logout calls exec  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                         logout calls exec  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                        </tbody>  
+                    </table>  
+                </div>  
+            </div>  
+        </div>  
+      
+          
+        <div class="mb-8">  
+            <div class="bg-white shadow overflow-hidden sm:rounded-lg">  
+                <div class="px-4 py-5 border-b border-gray-200 sm:px-6">  
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">  
+                        Pruebas de Integración  
+                    </h3>  
+                    <div class="mt-2 grid grid-cols-2 gap-4">  
+                        <div class="bg-green-50 p-3 rounded-lg">  
+                            <span class="text-green-700 font-semibold">6</span>  
+                            <span class="text-green-600"> Pruebas exitosas</span>  
+                        </div>  
+                        <div class="bg-red-50 p-3 rounded-lg">  
+                            <span class="text-red-700 font-semibold">0</span>  
+                            <span class="text-red-600"> Pruebas fallidas</span>  
+                        </div>  
+                    </div>  
+                </div>  
+                <div class="overflow-x-auto">  
+                    <table class="min-w-full divide-y divide-gray-200">  
+                        <thead class="bg-gray-50">  
+                            <tr>  
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">  
+                                    Nombre de la prueba  
+                                </th>  
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">  
+                                    Clase  
+                                </th>  
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">  
+                                    Estado  
+                                </th>  
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">  
+                                    Tiempo  
+                                </th>  
+                            </tr>  
+                        </thead>  
+                        <tbody class="bg-white divide-y divide-gray-200">  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Authentication Security Tests Valid Authentication Cases should authenticate valid credentials correctly  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Authentication Security Tests Valid Authentication Cases should authenticate valid credentials correctly  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Docker Authentication Integration should authenticate with Docker Hub  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Docker Authentication Integration should authenticate with Docker Hub  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.008s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Docker Authentication Integration should fail with invalid credentials  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Docker Authentication Integration should fail with invalid credentials  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.003s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Docker Authentication Integration should successfully logout  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Docker Authentication Integration should successfully logout  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.002s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Docker Authentication Integration should handle Docker not available during logout  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Docker Authentication Integration should handle Docker not available during logout  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Docker Authentication Integration should validate required credentials  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Docker Authentication Integration should validate required credentials  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.021s  
+                                    </td>  
+                                </tr>  
+                              
+                        </tbody>  
+                    </table>  
+                </div>  
+            </div>  
+        </div>  
+      
+          
+        <div class="mb-8">  
+            <div class="bg-white shadow overflow-hidden sm:rounded-lg">  
+                <div class="px-4 py-5 border-b border-gray-200 sm:px-6">  
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">  
+                        Pruebas de Seguridad  
+                    </h3>  
+                    <div class="mt-2 grid grid-cols-2 gap-4">  
+                        <div class="bg-green-50 p-3 rounded-lg">  
+                            <span class="text-green-700 font-semibold">13</span>  
+                            <span class="text-green-600"> Pruebas exitosas</span>  
+                        </div>  
+                        <div class="bg-red-50 p-3 rounded-lg">  
+                            <span class="text-red-700 font-semibold">0</span>  
+                            <span class="text-red-600"> Pruebas fallidas</span>  
+                        </div>  
+                    </div>  
+                </div>  
+                <div class="overflow-x-auto">  
+                    <table class="min-w-full divide-y divide-gray-200">  
+                        <thead class="bg-gray-50">  
+                            <tr>  
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">  
+                                    Nombre de la prueba  
+                                </th>  
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">  
+                                    Clase  
+                                </th>  
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">  
+                                    Estado  
+                                </th>  
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">  
+                                    Tiempo  
+                                </th>  
+                            </tr>  
+                        </thead>  
+                        <tbody class="bg-white divide-y divide-gray-200">  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Authentication Security Tests Basic Input Validation should reject null credentials  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Authentication Security Tests Basic Input Validation should reject null credentials  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.043s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Authentication Security Tests Basic Input Validation should reject undefined credentials  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Authentication Security Tests Basic Input Validation should reject undefined credentials  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Authentication Security Tests Basic Input Validation should reject non-string credentials  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Authentication Security Tests Basic Input Validation should reject non-string credentials  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Authentication Security Tests Empty and Whitespace Validation should reject empty strings  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Authentication Security Tests Empty and Whitespace Validation should reject empty strings  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.002s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Authentication Security Tests Empty and Whitespace Validation should reject whitespace-only strings  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Authentication Security Tests Empty and Whitespace Validation should reject whitespace-only strings  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Authentication Security Tests Length Validation should reject credentials exceeding maximum length  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Authentication Security Tests Length Validation should reject credentials exceeding maximum length  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Authentication Security Tests Length Validation should accept credentials within length limits  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Authentication Security Tests Length Validation should accept credentials within length limits  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Authentication Security Tests Special Characters Handling should handle special characters correctly  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Authentication Security Tests Special Characters Handling should handle special characters correctly  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.002s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Authentication Security Tests Special Characters Handling should handle multiple special characters  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Authentication Security Tests Special Characters Handling should handle multiple special characters  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.003s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Authentication Security Tests Valid Authentication Cases should handle long valid credentials  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Authentication Security Tests Valid Authentication Cases should handle long valid credentials  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Authentication Security Tests Invalid Authentication Cases should reject invalid credentials  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Authentication Security Tests Invalid Authentication Cases should reject invalid credentials  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Authentication Security Tests Invalid Authentication Cases should reject missing username  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Authentication Security Tests Invalid Authentication Cases should reject missing username  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Authentication Security Tests Invalid Authentication Cases should reject missing password  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Authentication Security Tests Invalid Authentication Cases should reject missing password  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                        </tbody>  
+                    </table>  
+                </div>  
+            </div>  
+        </div>  
+      
+          
+        <div class="mb-8">  
+            <div class="bg-white shadow overflow-hidden sm:rounded-lg">  
+                <div class="px-4 py-5 border-b border-gray-200 sm:px-6">  
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">  
+                        Pruebas de Sistema  
+                    </h3>  
+                    <div class="mt-2 grid grid-cols-2 gap-4">  
+                        <div class="bg-green-50 p-3 rounded-lg">  
+                            <span class="text-green-700 font-semibold">4</span>  
+                            <span class="text-green-600"> Pruebas exitosas</span>  
+                        </div>  
+                        <div class="bg-red-50 p-3 rounded-lg">  
+                            <span class="text-red-700 font-semibold">0</span>  
+                            <span class="text-red-600"> Pruebas fallidas</span>  
+                        </div>  
+                    </div>  
+                </div>  
+                <div class="overflow-x-auto">  
+                    <table class="min-w-full divide-y divide-gray-200">  
+                        <thead class="bg-gray-50">  
+                            <tr>  
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">  
+                                    Nombre de la prueba  
+                                </th>  
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">  
+                                    Clase  
+                                </th>  
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">  
+                                    Estado  
+                                </th>  
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">  
+                                    Tiempo  
+                                </th>  
+                            </tr>  
+                        </thead>  
+                        <tbody class="bg-white divide-y divide-gray-200">  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Docker Login System Tests should handle login workflow  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Docker Login System Tests should handle login workflow  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.014s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Docker Login System Tests should handle Docker Hub login  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Docker Login System Tests should handle Docker Hub login  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Docker Login System Tests should handle login failure  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Docker Login System Tests should handle login failure  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                                <tr class="bg-gray-50">  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-900">  
+                                        Docker Login System Tests should handle logout phase  
+                                          
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-500">  
+                                        Docker Login System Tests should handle logout phase  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">  
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+                                            Exitoso  
+                                        </span>  
+                                    </td>  
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">  
+                                        0.001s  
+                                    </td>  
+                                </tr>  
+                              
+                        </tbody>  
+                    </table>  
+                </div>  
+            </div>  
+        </div>  
+      
+    </div>  
+</body>  
+</html>
