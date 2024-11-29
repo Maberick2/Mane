@@ -1,7 +1,11 @@
 import * as core from '@actions/core';
 import * as exec from '@actions/exec';
 
-async function dockerLogin(username: string, password: string, registry?: string): Promise<void> {
+async function dockerLogin(
+  username: string,
+  password: string,
+  registry?: string
+): Promise<void> {
   const args = ['login'];
   if (username) args.push('--username', username);
   args.push('--password-stdin');

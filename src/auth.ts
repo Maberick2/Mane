@@ -6,7 +6,12 @@ interface AuthResult {
 
 export async function login(username: any, password: any): Promise<AuthResult> {
   // Validación de tipos y valores nulos
-  if (username === null || password === null || username === undefined || password === undefined) {
+  if (
+    username === null ||
+    password === null ||
+    username === undefined ||
+    password === undefined
+  ) {
     return {
       success: false,
       error: 'Username and password are required'

@@ -12,8 +12,14 @@ process.env = {
   ...process.env,
   TEMP: tmpDir,
   GITHUB_REPOSITORY: 'docker/login-action',
-  RUNNER_TEMP: path.join(tmpDir, 'runner-temp').split(path.sep).join(path.posix.sep),
-  RUNNER_TOOL_CACHE: path.join(tmpDir, 'runner-tool-cache').split(path.sep).join(path.posix.sep)
+  RUNNER_TEMP: path
+    .join(tmpDir, 'runner-temp')
+    .split(path.sep)
+    .join(path.posix.sep),
+  RUNNER_TOOL_CACHE: path
+    .join(tmpDir, 'runner-tool-cache')
+    .split(path.sep)
+    .join(path.posix.sep)
 };
 
 const config: Config.InitialOptions = {
@@ -39,7 +45,12 @@ const config: Config.InitialOptions = {
   moduleNameMapper: {
     '^csv-parse/sync': '<rootDir>/node_modules/csv-parse/dist/cjs/sync.cjs'
   },
-  collectCoverageFrom: ['src/**/*.ts', '!src/main.ts', '!src/**/*.d.ts', '!src/**/*.interface.ts'],
+  collectCoverageFrom: [
+    'src/**/*.ts',
+    '!src/main.ts',
+    '!src/**/*.d.ts',
+    '!src/**/*.interface.ts'
+  ],
   coverageDirectory: './coverage',
   coverageReporters: ['text-summary', 'lcov', 'html', 'json-summary'],
   coveragePathIgnorePatterns: ['/node_modules/', '/dist/', '/lib/'],

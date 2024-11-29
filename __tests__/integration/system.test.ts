@@ -1,5 +1,12 @@
 import { GenericContainer, StartedTestContainer } from 'testcontainers';
-import { expect, describe, beforeAll, afterAll, test, beforeEach } from '@jest/globals';
+import {
+  expect,
+  describe,
+  beforeAll,
+  afterAll,
+  test,
+  beforeEach
+} from '@jest/globals';
 import * as exec from '@actions/exec';
 import * as core from '@actions/core';
 import { run, cleanup } from '../../src/main';
@@ -12,7 +19,9 @@ describe('Docker Login System Tests', () => {
   let registryUrl: string;
 
   beforeAll(async () => {
-    container = await new GenericContainer('registry:2').withExposedPorts(5000).start();
+    container = await new GenericContainer('registry:2')
+      .withExposedPorts(5000)
+      .start();
 
     registryUrl = `localhost:${container.getMappedPort(5000)}`;
   });
@@ -78,7 +87,13 @@ describe('Docker Login System Tests', () => {
     // Verificar docker login
     expect(exec.getExecOutput).toHaveBeenCalledWith(
       'docker',
-      expect.arrayContaining(['login', '--username', 'test-user', '--password-stdin', registryUrl]),
+      expect.arrayContaining([
+        'login',
+        '--username',
+        'test-user',
+        '--password-stdin',
+        registryUrl
+      ]),
       expect.objectContaining({
         input: expect.any(Buffer),
         silent: true
@@ -97,7 +112,12 @@ describe('Docker Login System Tests', () => {
     // Verificar docker login
     expect(exec.getExecOutput).toHaveBeenCalledWith(
       'docker',
-      expect.arrayContaining(['login', '--username', 'test-user', '--password-stdin']),
+      expect.arrayContaining([
+        'login',
+        '--username',
+        'test-user',
+        '--password-stdin'
+      ]),
       expect.objectContaining({
         input: expect.any(Buffer),
         silent: true
@@ -111,7 +131,9 @@ describe('Docker Login System Tests', () => {
     process.env.INPUT_REGISTRY = registryUrl;
 
     // Simular error
-    (exec.getExecOutput as jest.Mock).mockRejectedValue(new Error('Login failed'));
+    (exec.getExecOutput as jest.Mock).mockRejectedValue(
+      new Error('Login failed')
+    );
 
     await run();
 
