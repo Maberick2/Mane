@@ -12,16 +12,17 @@ jobs:
         uses: actions/setup-node@v3  
         with:  
           node-version: '20'  
-          cache: 'yarn'  
 
-      - name: Set up Docker Buildx  
-        uses: docker/setup-buildx-action@v3  
+      - name: Setup yarn  
+        run: |  
+          npm install -g yarn  
+          yarn --version  
 
-      - name: Docker login  
-        uses: docker/login-action@v3  
-        with:  
-          username: ${{ vars.DOCKER_USERNAME }}  
-          password: ${{ secrets.DOCKER_PASSWORD }}  
+      - name: Install dependencies  
+        run: |  
+          yarn install --network-timeout 300000  
+        env:  
+          NODE_ENV: development  
 
       - name: Create test directories  
         run: |  
@@ -33,16 +34,6 @@ jobs:
         env:  
           RUNNER_TEMP: /tmp/github_runner  
           RUNNER_TOOL_CACHE: /tmp/github_tool_cache  
-
-      - name: Enable corepack  
-        run: |  
-          corepack enable  
-          yarn set version stable  
-
-      - name: Install dependencies  
-        run: |  
-          yarn install --frozen-lockfile  
-          yarn add -D @jest/globals @types/jest jest-junit  
 
       - name: Run integration tests  
         run: |  
