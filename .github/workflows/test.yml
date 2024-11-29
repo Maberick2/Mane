@@ -33,7 +33,7 @@ jobs:
         run: npm run security:audit  
         
       - name: Upload coverage reports  
-        uses: codecov/codecov-action@v3  
+        uses: codecov/codecov-action@v5  
         
   integration:  
     runs-on: ubuntu-latest  
