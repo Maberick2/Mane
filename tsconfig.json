@@ -15,10 +15,21 @@
       "node",  
       "jest",  
       "yargs",  
-      "yargs-parser"  
+      "yargs-parser",
     ],  
     "skipLibCheck": true,  
-    "moduleResolution": "node"  
+    "moduleResolution": "node",  
+    "baseUrl": ".",  
+    "paths": {  
+      "*": ["node_modules/*", "src/types/*"]  
+    },  
+    "allowJs": true,  
+    "experimentalDecorators": true,  
+    "emitDecoratorMetadata": true,  
+    "typeRoots": [  
+      "./node_modules/@types",  
+      "./src/types"  
+    ]  
   },  
   "exclude": [  
     "./__tests__/**/*",  
@@ -27,6 +38,11 @@
     "jest.config.ts"  
   ],  
   "include": [  
-    "src/**/*"  
-  ]  
+    "src/**/*",  
+    "__tests__/**/*"  
+  ],  
+  "ts-node": {  
+    "transpileOnly": true,  
+    "files": true  
+  }  
 }
