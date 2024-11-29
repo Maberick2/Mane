@@ -23,23 +23,35 @@ jobs:
           username: ${{ vars.DOCKER_USERNAME }}  
           password: ${{ secrets.DOCKER_PASSWORD }}  
 
-      - name: Create directories  
+      - name: Create test directories  
         run: |  
           mkdir -p reports  
           mkdir -p coverage  
+          mkdir -p $RUNNER_TEMP  
+          mkdir -p $RUNNER_TOOL_CACHE  
+          chmod -R 777 reports coverage $RUNNER_TEMP $RUNNER_TOOL_CACHE  
+        env:  
+          RUNNER_TEMP: /tmp/github_runner  
+          RUNNER_TOOL_CACHE: /tmp/github_tool_cache  
 
       - name: Enable corepack  
-        run: corepack enable  
+        run: |  
+          corepack enable  
+          yarn set version stable  
+
+      - name: Install dependencies  
+        run: |  
+          yarn install --frozen-lockfile  
+          yarn add -D @jest/globals @types/jest jest-junit  
 
       - name: Run integration tests  
         run: |  
-          docker compose build  
-          docker compose run --rm login-action yarn run test:integration  
+          yarn run test:integration  
         env:  
           RUNNER_TEMP: /tmp/github_runner  
           RUNNER_TOOL_CACHE: /tmp/github_tool_cache  
           NODE_ENV: test  
-          JEST_JUNIT_OUTPUT_DIR: ./reports/  
+          JEST_JUNIT_OUTPUT_DIR: ./reports  
           JEST_JUNIT_OUTPUT_NAME: junit.xml  
           DOCKER_USERNAME: ${{ vars.DOCKER_USERNAME }}  
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}  
@@ -51,8 +63,4 @@ jobs:
           name: test-reports  
           path: |  
             reports/  
-            coverage/  
-
-      - name: Docker Compose Down  
-        if: always()  
-        run: docker compose down
+            coverage/
