@@ -8,8 +8,13 @@ on:
 jobs:  
   metrics:  
     runs-on: ubuntu-latest  
+    permissions:  
+      contents: read  
+      packages: read  
     steps:  
       - uses: actions/checkout@v4  
+        with:  
+          token: ${{ secrets.ghp_OKDPsPjVOQpYz4fw8JwAnS7i70Xfvy2cTkpH }}  
       
       - name: Setup Node.js  
         uses: actions/setup-node@v4  
@@ -18,16 +23,12 @@ jobs:
           cache: 'npm'  
       
       - name: Install dependencies  
-        run: npm ci  
-        
+        run: |  
+          npm ci  
+          npm install -g typescript  
+      
       - name: Run tests with coverage  
         run: npm run test:coverage  
-      
-      - name: Upload coverage reports  
-        uses: codecov/codecov-action@v4  
-        with:  
-          token: ${{ secrets.CODECOV_TOKEN }}  
-          fail_ci_if_error: true  
       
       - name: Check build time  
         run: |  
