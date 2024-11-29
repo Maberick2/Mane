@@ -1,0 +1,70 @@
+name: Login Action Tests  
+
+on:  
+  push:  
+    paths:  
+      - 'src/**'  
+      - '__tests__/**'  
+      - 'package.json'  
+      - 'jest.config.ts'  
+  pull_request:  
+    paths:  
+      - 'src/**'  
+      - '__tests__/**'  
+      - 'package.json'  
+      - 'jest.config.ts'  
+
+jobs:  
+  test:  
+    runs-on: ubuntu-latest  
+    
+    steps:  
+      - uses: actions/checkout@v3  
+
+      - name: Set up Node.js  
+        uses: actions/setup-node@v3  
+        with:  
+          node-version: '18.19.0'  
+          cache: 'npm'  
+
+      - name: Install dependencies  
+        run: npm ci  
+
+      - name: Run validation (lint and tests)  
+        run: npm run validate  
+
+      - name: Run security tests  
+        run: npm run security-test  
+
+      - name: Run integration tests  
+        run: npm run test:integration  
+
+      - name: Run system tests  
+        run: npm run test:system  
+
+      - name: Generate metrics and reports  
+        run: |  
+          npm run metrics  
+          npm run analyze  
+          npm run test-and-report  
+
+      - name: Run complexity analysis  
+        run: npm run complexity  
+
+      - name: Upload test results  
+        if: always()  
+        uses: actions/upload-artifact@v3  
+        with:  
+          name: test-results  
+          path: |  
+            reports/  
+            coverage/  
+            junit.xml  
+
+      - name: Run security scan  
+        if: success()  
+        run: npm run security:scan  
+
+      - name: Security audit  
+        if: success()  
+        run: npm run security:audit
