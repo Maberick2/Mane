@@ -20,28 +20,38 @@ jobs:
           sudo chmod +x /usr/local/bin/docker-compose  
           docker-compose --version  
       
-      - name: Set up Docker  
-        uses: docker/setup-buildx-action@v2  
-      
       - name: Docker login  
         run: |  
           echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u ${{ vars.DOCKER_USERNAME }} --password-stdin  
       
       - name: Install dependencies  
-        run: npm ci  
+        run: |  
+          npm ci  
+          npm install -g ts-node typescript  
       
+      - name: Create reports directory  
+        run: mkdir -p reports  
+
       - name: Run Integration Tests  
         run: |  
           docker-compose up -d  
-          npm run test:integration  
+          NODE_OPTIONS="--experimental-vm-modules" npx jest --config=jest.config.ts --testMatch="**/__tests__/integration/**/*.test.ts" --no-cache --detectOpenHandles --forceExit  
         env:  
           DOCKER_USERNAME: ${{ vars.DOCKER_USERNAME }}  
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}  
           NODE_ENV: test  
+          JEST_JUNIT_OUTPUT_DIR: ./reports/  
+          JEST_JUNIT_OUTPUT_NAME: junit.xml  
 
       - name: Upload test results  
         if: always()  
         uses: actions/upload-artifact@v3  
         with:  
           name: test-reports  
-          path: reports/
+          path: |  
+            reports/  
+            coverage/  
+
+      - name: Docker Compose Down  
+        if: always()  
+        run: docker-compose down

@@ -1,16 +1,6 @@
-process.env = {
-  ...process.env,
-  GITHUB_WORKSPACE: process.cwd(),
-  RUNNER_TEMP: '/tmp/github-actions-runner-temp',
-  RUNNER_TOOL_CACHE: '/tmp/github-actions-runner-tool-cache'
-};
+import { jest } from '@jest/globals';  
 
-// Mock básico de console para evitar ruido en los tests
-global.console = {
-  ...console,
-  log: jest.fn(),
-  debug: jest.fn(),
-  info: jest.fn(),
-  warn: jest.fn(),
-  error: jest.fn()
-};
+jest.setTimeout(30000);  
+
+// Configuración global para las pruebas  
+process.env.NODE_ENV = 'test';

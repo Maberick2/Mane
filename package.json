@@ -29,16 +29,16 @@
     "prepare": "husky && husky install"
   },
   "dependencies": {
-    "@actions/exec": "^1.1.1",
     "@aws-sdk/client-ecr": "^3.664.0",
     "@aws-sdk/client-ecr-public": "^3.664.0",
-    "@docker/actions-toolkit": "^0.42.0",
     "http-proxy-agent": "^7.0.2",
     "https-proxy-agent": "^7.0.5"
   },
   "devDependencies": {
     "@actions/core": "^1.11.1",
+    "@actions/exec": "^1.1.1",
     "@actions/github": "^6.0.0",
+    "@docker/actions-toolkit": "^0.46.0",
     "@jest/globals": "^29.7.0",
     "@types/jest": "^29.5.14",
     "@types/jsdom": "^21.1.7",
