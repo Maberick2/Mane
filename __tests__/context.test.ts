@@ -1,6 +1,6 @@
-import {expect, test} from '@jest/globals';
+import { expect, test } from '@jest/globals';
 
-import {getInputs} from '../src/context';
+import { getInputs } from '../src/context';
 
 test('with password and username getInputs does not throw error', async () => {
   process.env['INPUT_USERNAME'] = 'dbowie';

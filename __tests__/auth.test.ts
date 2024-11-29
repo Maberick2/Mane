@@ -1,4 +1,4 @@
-import {describe, expect, test} from '@jest/globals';
+import { describe, expect, test } from '@jest/globals';
 import * as auth from '../src/auth';
 
 describe('Authentication Edge Cases', () => {
@@ -48,7 +48,29 @@ describe('Authentication Edge Cases', () => {
 
   // Pruebas de caracteres especiales
   test('handles various special characters', async () => {
-    const specialChars = ['@', '#', '$', '%', '^', '&', '*', '(', ')', ',', '.', '?', '"', ':', '{', '}', '|', '<', '>', '+', '-'];
+    const specialChars = [
+      '@',
+      '#',
+      '$',
+      '%',
+      '^',
+      '&',
+      '*',
+      '(',
+      ')',
+      ',',
+      '.',
+      '?',
+      '"',
+      ':',
+      '{',
+      '}',
+      '|',
+      '<',
+      '>',
+      '+',
+      '-'
+    ];
 
     for (const char of specialChars) {
       const result1 = await auth.login(`user${char}`, 'pass');

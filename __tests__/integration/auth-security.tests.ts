@@ -1,4 +1,4 @@
-import {login} from '../../src/auth';
+import { login } from '../../src/auth';
 
 describe('Authentication Security Tests', () => {
   // Test Group 1: Basic Input Validation

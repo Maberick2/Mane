@@ -1,8 +1,8 @@
-import {GenericContainer, StartedTestContainer} from 'testcontainers';
-import {expect, describe, beforeAll, afterAll, test, beforeEach} from '@jest/globals';
+import { GenericContainer, StartedTestContainer } from 'testcontainers';
+import { expect, describe, beforeAll, afterAll, test, beforeEach } from '@jest/globals';
 import * as exec from '@actions/exec';
 import * as core from '@actions/core';
-import {run, cleanup} from '../../src/main';
+import { run, cleanup } from '../../src/main';
 
 jest.mock('@actions/core');
 jest.mock('@actions/exec');
@@ -115,7 +115,9 @@ describe('Docker Login System Tests', () => {
 
     await run();
 
-    expect(core.setFailed).toHaveBeenCalledWith(expect.stringContaining('Failed to login to Docker registry'));
+    expect(core.setFailed).toHaveBeenCalledWith(
+      expect.stringContaining('Failed to login to Docker registry')
+    );
   });
 
   test('should handle logout phase', async () => {

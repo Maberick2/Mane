@@ -1,9 +1,12 @@
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
-import type {Config} from '@jest/types';
+import type { Config } from '@jest/types';
 
-const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'docker-login-action-')).split(path.sep).join(path.posix.sep);
+const tmpDir = fs
+  .mkdtempSync(path.join(os.tmpdir(), 'docker-login-action-'))
+  .split(path.sep)
+  .join(path.posix.sep);
 
 process.env = {
   ...process.env,
@@ -17,7 +20,14 @@ const config: Config.InitialOptions = {
   clearMocks: true,
   testEnvironment: 'node',
   moduleFileExtensions: ['js', 'ts'],
-  testMatch: ['**/*.test.ts', '**/*.tests.ts', '**/__tests__/**/*.test.ts', '**/__tests__/**/*.tests.ts', '**/__tests__/integration/**/*.test.ts', '**/__tests__/integration/**/*.tests.ts'],
+  testMatch: [
+    '**/*.test.ts',
+    '**/*.tests.ts',
+    '**/__tests__/**/*.test.ts',
+    '**/__tests__/**/*.tests.ts',
+    '**/__tests__/integration/**/*.test.ts',
+    '**/__tests__/integration/**/*.tests.ts'
+  ],
   transform: {
     '^.+\\.ts$': [
       'ts-jest',

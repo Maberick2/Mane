@@ -13,7 +13,7 @@ export function setLogout(value: boolean): void {
   core.saveState('logout', value.toString());
 }
 
-export function getState(): {registry: string; logout: boolean} {
+export function getState(): { registry: string; logout: boolean } {
   return {
     registry: registry || '',
     logout: logout || false
@@ -21,4 +21,4 @@ export function getState(): {registry: string; logout: boolean} {
 }
 
 // Exportar las variables para que sean accesibles en los tests
-export {registry, logout};
+export { registry, logout };

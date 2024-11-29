@@ -14,6 +14,6 @@ export function getInputs(): Inputs {
     username: core.getInput('username'),
     password: core.getInput('password'),
     ecr: core.getInput('ecr') || 'auto', // Default a 'auto'
-    logout: core.getBooleanInput('logout', {required: false}) || true // Default a true
+    logout: core.getBooleanInput('logout', { required: false }) || true // Default a true
   };
 }

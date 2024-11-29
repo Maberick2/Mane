@@ -15,7 +15,9 @@ async function dockerLogin(username: string, password: string, registry?: string
   try {
     await exec.getExecOutput('docker', args, options);
   } catch (error) {
-    throw new Error(`Failed to login to Docker registry: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    throw new Error(
+      `Failed to login to Docker registry: ${error instanceof Error ? error.message : 'Unknown error'}`
+    );
   }
 }
 
@@ -23,7 +25,9 @@ async function dockerLogout(registry: string): Promise<void> {
   try {
     await exec.getExecOutput('docker', ['logout', registry]);
   } catch (error) {
-    core.warning(`Failed to logout from Docker registry: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    core.warning(
+      `Failed to logout from Docker registry: ${error instanceof Error ? error.message : 'Unknown error'}`
+    );
   }
 }
 
