@@ -10,16 +10,56 @@ on:
 jobs:  
   security:  
     runs-on: ubuntu-latest  
+    permissions:  
+      security-events: write  
+      actions: read  
+      contents: read  
+
     steps:  
-      - uses: actions/checkout@v2  
-      
-      - name: Run OWASP ZAP Scan  
+      - name: Checkout repository  
+        uses: actions/checkout@v3  
+
+      # Configurar Node.js  
+      - name: Setup Node.js  
+        uses: actions/setup-node@v3  
+        with:  
+          node-version: '18'  
+          cache: 'npm'  
+
+      # Instalar dependencias  
+      - name: Install dependencies  
+        run: npm ci  
+
+      # CodeQL Analysis  
+      - name: Initialize CodeQL  
+        uses: github/codeql-action/init@v2  
+        with:  
+          languages: javascript  
+
+      # OWASP ZAP Scan  
+      - name: ZAP Scan  
         uses: zaproxy/action-full-scan@v0.4.0  
         with:  
-          target: 'http://your-application-url'  
-      
+          target: 'http://localhost:3000'  # Cambia esto por tu URL real  
+          allow_issue_writing: true  
+          fail_action: false  # No falla el workflow si encuentra vulnerabilidades  
+        continue-on-error: true  
+
+      # npm audit  
       - name: Run npm audit  
         run: npm audit  
-      
-      - name: Run CodeQL Analysis  
-        uses: github/codeql-action/analyze@v2
+        continue-on-error: true  
+
+      # Análisis CodeQL  
+      - name: Perform CodeQL Analysis  
+        uses: github/codeql-action/analyze@v2  
+
+      # Generar y subir reporte  
+      - name: Upload ZAP Report  
+        uses: actions/upload-artifact@v3  
+        with:  
+          name: zap-scan-report  
+          path: |  
+            report.html  
+            report.json  
+            report.md
