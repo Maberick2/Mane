@@ -9,18 +9,26 @@ jobs:
   metrics:  
     runs-on: ubuntu-latest  
     permissions:  
-      contents: read  
+      contents: write  
       packages: read  
     steps:  
-      - uses: actions/checkout@v4  
+      - name: Checkout repository  
+        uses: actions/checkout@v4  
         with:  
-          token: ${{ secrets.GH_TOKEN }}  
+          fetch-depth: 0  
+          persist-credentials: false  
+          token: ${{ secrets.GITHUB_TOKEN }}  
       
       - name: Setup Node.js  
         uses: actions/setup-node@v4  
         with:  
           node-version: '18.19.0'  
           cache: 'npm'  
+      
+      - name: Configure Git  
+        run: |  
+          git config --global user.name "github-actions[bot]"  
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"  
       
       - name: Install dependencies  
         run: |  
