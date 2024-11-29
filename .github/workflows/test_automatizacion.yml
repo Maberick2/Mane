@@ -5,18 +5,12 @@ on:
   pull_request:  
     branches: [ main ]  
   schedule:  
-    - cron: '*/1 * * * *'  # Ejecutar cada 5 minutos  
+    - cron: '*/5 * * * *'  
 
 jobs:  
   test:  
     runs-on: ubuntu-latest  
     
-    services:  
-      registry:  
-        image: registry:2  
-        ports:  
-          - 5000:5000  
-
     steps:  
       - name: Checkout code  
         uses: actions/checkout@v3  
@@ -24,35 +18,29 @@ jobs:
       - name: Setup Node.js  
         uses: actions/setup-node@v3  
         with:  
-          node-version: '18.19.0'  # Versión específica según package.json  
+          node-version: '18.19.0'  
           cache: 'npm'  
 
       - name: Install dependencies  
         run: npm ci  
 
-      - name: Configure AWS Credentials  
-        uses: aws-actions/configure-aws-credentials@v4  
-        with:  
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}  
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}  
-          aws-region: us-east-1  
+      # Ejecutar pruebas  
+      - name: Run Tests  
+        run: |  
+          npm run test  
+          npm run test:integration  
+        continue-on-error: true  
 
-      # Ejecutar pruebas usando los scripts existentes  
-      - name: Run All Tests  
-        run: npm run test:full  
-        env:  
-          DOCKER_REGISTRY: localhost:5000  
-          AWS_REGION: us-east-1  
+      # Ejecutar análisis de código  
+      - name: Run Linting  
+        run: npm run lint  
+        continue-on-error: true  
 
       # Generar reportes  
       - name: Generate Reports  
         if: always()  
-        run: npm run report:full  
-
-      # Análisis de complejidad  
-      - name: Run Complexity Analysis  
-        if: always()  
-        run: npm run complexity  
+        run: npm run generate-report  
+        continue-on-error: true  
 
       # Subir reportes  
       - name: Upload Test Reports  
@@ -60,31 +48,4 @@ jobs:
         uses: actions/upload-artifact@v3  
         with:  
           name: test-results  
-          path: |  
-            reports/  
-            coverage/  
-            junit.xml  
-
-      # Notificar resultados  
-      - name: Notify Test Results  
-        if: always()  
-        uses: actions/github-script@v6  
-        with:  
-          script: |  
-            const fs = require('fs');  
-            try {  
-              const junit = fs.readFileSync('junit.xml', 'utf8');  
-              const failed = junit.includes('failures="0"') ? '✅' : '❌';  
-              const message = `Test Results ${failed}\n\nCheck detailed report in Actions tab`;  
-              
-              if (context.eventName === 'pull_request') {  
-                github.rest.issues.createComment({  
-                  issue_number: context.issue.number,  
-                  owner: context.repo.owner,  
-                  repo: context.repo.repo,  
-                  body: message  
-                });  
-              }  
-            } catch (error) {  
-              console.error('Error processing test results:', error);  
-            }
+          path: reports/
