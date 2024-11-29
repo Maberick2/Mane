@@ -29,6 +29,7 @@
     "prepare": "husky && husky install"
   },
   "dependencies": {
+    "@actions/exec": "^1.1.1",
     "@aws-sdk/client-ecr": "^3.664.0",
     "@aws-sdk/client-ecr-public": "^3.664.0",
     "@docker/actions-toolkit": "^0.42.0",
@@ -41,6 +42,8 @@
     "@jest/globals": "^29.7.0",
     "@types/jest": "^29.5.14",
     "@types/node": "^20.12.12",
+    "@types/yargs": "^17.0.33",
+    "@types/yargs-parser": "^21.0.3",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
     "@vercel/ncc": "^0.38.1",

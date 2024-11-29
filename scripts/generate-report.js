@@ -66,7 +66,7 @@ function parseJUnitXml(xmlContent) {
 
 function generateCoverageSection() {  
     try {  
-        const coverageData = JSON.parse(fs.readFileSync(path.join('coverage', 'coverage-summary.json'), 'utf8'));  
+        const coverageData = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'coverage', 'coverage-summary.json'), 'utf8'));  
         const total = coverageData.total;  
 
         return `  
@@ -186,7 +186,7 @@ function generateTestRow(test) {
 
 function generateHtmlReport() {  
     try {  
-        const junitContent = fs.readFileSync('junit.xml', 'utf8');  
+        const junitContent = fs.readFileSync(path.join(__dirname, '..', 'reports', 'junit.xml'), 'utf8');  
         const results = parseJUnitXml(junitContent);  
         const timestamp = new Date().toLocaleString();  
 
@@ -242,7 +242,7 @@ function generateHtmlReport() {
 </html>`;  
 
         // Asegurarse de que el directorio reports existe  
-        const reportsDir = 'reports';  
+        const reportsDir = path.join(__dirname, '..', 'reports');  
         if (!fs.existsSync(reportsDir)) {  
             fs.mkdirSync(reportsDir);  
         }  

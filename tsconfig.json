@@ -1,21 +1,32 @@
-{
-  "compilerOptions": {
-    "esModuleInterop": true,
-    "target": "es6",
-    "module": "commonjs",
-    "strict": true,
-    "newLine": "lf",
-    "outDir": "./lib",
-    "rootDir": "./src",
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitAny": false,
-    "resolveJsonModule": true,
-    "useUnknownInCatchVariables": false,
-  },
-  "exclude": [
-    "./__tests__/**/*",
-    "./lib/**/*",
-    "node_modules",
-    "jest.config.ts"
-  ]
+{  
+  "compilerOptions": {  
+    "esModuleInterop": true,  
+    "target": "es6",  
+    "module": "commonjs",  
+    "strict": true,  
+    "newLine": "lf",  
+    "outDir": "./lib",  
+    "rootDir": "./src",  
+    "forceConsistentCasingInFileNames": true,  
+    "noImplicitAny": false,  
+    "resolveJsonModule": true,  
+    "useUnknownInCatchVariables": false,  
+    "types": [  
+      "node",  
+      "jest",  
+      "yargs",  
+      "yargs-parser"  
+    ],  
+    "skipLibCheck": true,  
+    "moduleResolution": "node"  
+  },  
+  "exclude": [  
+    "./__tests__/**/*",  
+    "./lib/**/*",  
+    "node_modules",  
+    "jest.config.ts"  
+  ],  
+  "include": [  
+    "src/**/*"  
+  ]  
 }
