@@ -4,8 +4,18 @@ services:
     build:  
       context: .  
       dockerfile: dev.Dockerfile  
+      target: test  
     volumes:  
-      - .:/app  
-      - /app/node_modules  
+      - .:/src  
+      - reports:/src/reports  
+      - coverage:/tmp/coverage  
     environment:  
-      - NODE_ENV=development
+      - NODE_ENV=test  
+      - RUNNER_TEMP=/tmp/github_runner  
+      - RUNNER_TOOL_CACHE=/tmp/github_tool_cache  
+      - JEST_JUNIT_OUTPUT_DIR=/src/reports/  
+      - JEST_JUNIT_OUTPUT_NAME=junit.xml  
+
+volumes:  
+  reports:  
+  coverage:

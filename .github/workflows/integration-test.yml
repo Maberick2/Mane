@@ -12,36 +12,37 @@ jobs:
         uses: actions/setup-node@v3  
         with:  
           node-version: '20'  
-          cache: 'npm'  
+          cache: 'yarn'  
 
-      - name: Install Docker Compose  
-        run: |  
-          sudo curl -L "https://github.com/docker/compose/releases/download/v2.23.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose  
-          sudo chmod +x /usr/local/bin/docker-compose  
-          docker-compose --version  
-      
+      - name: Set up Docker Buildx  
+        uses: docker/setup-buildx-action@v3  
+
       - name: Docker login  
-        run: |  
-          echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u ${{ vars.DOCKER_USERNAME }} --password-stdin  
-      
-      - name: Install dependencies  
-        run: |  
-          npm ci  
-          npm install -g ts-node typescript  
-      
-      - name: Create reports directory  
-        run: mkdir -p reports  
+        uses: docker/login-action@v3  
+        with:  
+          username: ${{ vars.DOCKER_USERNAME }}  
+          password: ${{ secrets.DOCKER_PASSWORD }}  
 
-      - name: Run Integration Tests  
+      - name: Create directories  
         run: |  
-          docker-compose up -d  
-          NODE_OPTIONS="--experimental-vm-modules" npx jest --config=jest.config.ts --testMatch="**/__tests__/integration/**/*.test.ts" --no-cache --detectOpenHandles --forceExit  
+          mkdir -p reports  
+          mkdir -p coverage  
+
+      - name: Enable corepack  
+        run: corepack enable  
+
+      - name: Run integration tests  
+        run: |  
+          docker compose build  
+          docker compose run --rm login-action yarn run test:integration  
         env:  
-          DOCKER_USERNAME: ${{ vars.DOCKER_USERNAME }}  
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}  
+          RUNNER_TEMP: /tmp/github_runner  
+          RUNNER_TOOL_CACHE: /tmp/github_tool_cache  
           NODE_ENV: test  
           JEST_JUNIT_OUTPUT_DIR: ./reports/  
           JEST_JUNIT_OUTPUT_NAME: junit.xml  
+          DOCKER_USERNAME: ${{ vars.DOCKER_USERNAME }}  
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}  
 
       - name: Upload test results  
         if: always()  
@@ -54,4 +55,4 @@ jobs:
 
       - name: Docker Compose Down  
         if: always()  
-        run: docker-compose down
+        run: docker compose down
