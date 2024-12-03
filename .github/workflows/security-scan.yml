@@ -38,7 +38,7 @@ jobs:
 
       # OWASP ZAP Scan  
       - name: ZAP Scan  
-        uses: zaproxy/action-full-scan@v0.4.0  
+        uses: zaproxy/action-full-scan@v0.12.0  
         with:  
           target: 'http://localhost:3000'  # Cambia esto por tu URL real  
           allow_issue_writing: true  
