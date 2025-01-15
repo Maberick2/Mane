@@ -45,7 +45,7 @@
       "@aws-sdk/client-ecr": "^3.664.0",
       "@aws-sdk/client-ecr-public": "^3.664.0",
       "@docker/actions-toolkit": "^0.42.0",
-      "@smithy/middleware-retry": "^2.1.1",
+      "@smithy/middleware-retry": "^4.0.2",
       "http-proxy-agent": "^7.0.2",
       "https-proxy-agent": "^7.0.5"
     },
